@@ -1,8 +1,5 @@
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -20,12 +17,12 @@ public class Main {
                 " boulevards whom he visited of an evening. He led the mazurka at the Arkhárovs’ ball, talked about the" +
                 " war with Field Marshal Kámenski, visited the English Club, and was on intimate terms with a colonel of" +
                 " forty to whom Denísov had introduced him.";
-        File file1 =new File("src/Text.txt");
+        File file1 = new File("src/Text.txt");
         File file2 = new File("D:/javalessons/prac/Kurs/HomeWork15/src/concText.txt");
         System.out.println("Записание текста в файл и прочтение его и вывод в консоль через относительный путь");
-        writeAndReadOtnosPytFail(text,file1);
+        writeAndReadOtnosPytFail(text, file1);
         System.out.println("\nЗаписание текста в файл и прочтение его и вывод в консоль через конкретный путь");
-        writeAndReadConcretPytKFail(text,file2);
+        writeAndReadConcretPytKFail(text, file2);
 
         System.out.println("Задание с машиной");
         String file = "src/CarInfo.txt";
@@ -38,16 +35,16 @@ public class Main {
         deserialize(file);
     }
 
-    public static void writeAndReadOtnosPytFail(String text,File file) {
-        try(FileWriter fileWriter=new FileWriter(file)){
+    public static void writeAndReadOtnosPytFail(String text, File file) {
+        try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(text);
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         }
 
-        try(FileReader fileReader = new FileReader(file)){
+        try (FileReader fileReader = new FileReader(file)) {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String text1=  bufferedReader.readLine();
+            String text1 = bufferedReader.readLine();
             System.out.println(text1);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -57,18 +54,15 @@ public class Main {
     }
 
 
-
-
-
-    public static void writeAndReadConcretPytKFail(String text,File file) {
-        try(FileWriter fileWriter=new FileWriter(file)){
+    public static void writeAndReadConcretPytKFail(String text, File file) {
+        try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(text);
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         }
-        try(FileReader fileReader = new FileReader(file)){
+        try (FileReader fileReader = new FileReader(file)) {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String text1=  bufferedReader.readLine();
+            String text1 = bufferedReader.readLine();
             System.out.println(text1);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -85,9 +79,10 @@ public class Main {
         }
 
     }
+
     public static void deserialize(String file) {
         try (ObjectInputStream objectInputputStream = new ObjectInputStream(new FileInputStream(file))) {
-            Car car1=(Car) objectInputputStream.readObject();
+            Car car1 = (Car) objectInputputStream.readObject();
             System.out.println(car1);
         } catch (Throwable e) {
             e.printStackTrace();
